@@ -1,13 +1,33 @@
 spring:
   datasource:
-    hikari:
-      data-source-class-name: j
-      jdbc-url: j
-      username: p
-      password:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql
-    password: w
-    username:
-mybatis:
-  mapper-locations:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/sys?useSSL=true&characterEncoding=utf-8&serverTimezone=UTC
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall,log4j
+      connection-properties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: *.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*
+      stat-view-servlet:
+        url-pattern: /druid/*
+        allow: 127.0.0.1, 192.168.1.1
+        deny: 192.168.1.173
+        reset-enable: false
+        login-password: 123456
+        login-username: admin
