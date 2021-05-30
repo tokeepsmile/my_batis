@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    hikari:
+      data-source-class-name: j
+      jdbc-url: j
+      username: p
+      password:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql
+    password: w
+    username:
+mybatis:
+  mapper-locations:
